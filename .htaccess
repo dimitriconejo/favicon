@@ -6,8 +6,8 @@ AddDefaultCharset UTF-8
 RewriteEngine On
 RewriteBase /
 
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
 #Denegamos acceso al .htaccess, php.ini, etc...
 <FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">

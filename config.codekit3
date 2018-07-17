@@ -9,6 +9,20 @@
 	],
 "creatorBuild": "26680",
 "files": {
+	"\/.gitattributes": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.gitattributes",
+		"oF": 0
+		},
+	"\/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.gitignore",
+		"oF": 0
+		},
 	"\/.htaccess": {
 		"cB": 0,
 		"ft": 8192,
@@ -483,13 +497,23 @@
 		"oAP": "\/php\/processor.php",
 		"oF": 0
 		},
-	"\/sftp-config.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/sftp-config-min.json",
+	"\/README.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "\/README.html",
 		"oF": 0,
-		"oO": 0,
-		"oS": 1
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
 		},
 	"\/style\/fonts\/open_sans\/LICENSE.txt": {
 		"cB": 0,
@@ -766,9 +790,9 @@
 	},
 "projectAttributes": {
 	"creationDate": 537198413,
-	"displayValue": "Favicon",
+	"displayValue": "favicon",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "\/images\/extra\/apple-touch-icon-120x120.png",
+	"iconImageName": "\/Users\/dimitriconejosanz\/Library\/Mobile Documents\/com~apple~CloudDocs\/Dimitri Conejo Sanz\/Proyectos\/Favicon\/images\/extra\/apple-touch-icon-120x120.png",
 	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
