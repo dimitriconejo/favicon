@@ -1,0 +1,37 @@
+//FONT MIXIN
+@mixin fuente($nombre, $ruta){
+    $eot      : $ruta + '.eot';
+    $eot_iefix: $ruta + '.eot?#iefix';
+    $woff     : $ruta + '.woff';
+    $ttf      : $ruta + '.ttf';
+    //$otf      : $ruta + '.otf';
+    $svg      : $ruta + '.svg#' + $nombre;
+
+    @font-face{
+        font-family: $nombre;
+        src: url($eot);
+        src: url($eot_iefix) format('embedded-opentype'),
+             url($woff) format('woff'),
+             url($ttf) format('truetype'),
+             //url($otf) format('opentype'),
+             url($svg) format('svg');
+        font-weight : normal;
+        font-style  : normal;
+        font-stretch: normal;
+    }
+}
+//END FONT MIXIN
+
+
+//OPEN SANS
+@include fuente('OS-ExtraBold', '../style/fonts/open_sans/OpenSans-ExtraBold');
+@include fuente('OS-Bold', '../style/fonts/open_sans/OpenSans-Bold');
+@include fuente('OS-SemiBold', '../style/fonts/open_sans/OpenSans-SemiBold');
+@include fuente('OS-Regular', '../style/fonts/open_sans/OpenSans-Regular');
+@include fuente('OS-Light', '../style/fonts/open_sans/OpenSans-Light');
+//END OPEN SANS
+
+
+//STALEMATES
+@include fuente('Stalemates', '../style/fonts/stalemates/Stalemates');
+//END STALEMATES

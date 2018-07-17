@@ -1,0 +1,35 @@
+//  MIXINS
+@mixin transicion($tiempo){
+    -webkit-transition: $tiempo;
+    -moz-transition   : $tiempo;
+    -ms-transition    : $tiempo;
+    -o-transition     : $tiempo;
+    transition        : $tiempo;
+}
+
+@mixin transformacion($efecto){
+    -webkit-transform: $efecto;
+    -moz-transform   : $efecto;
+    -ms-transform    : $efecto;
+    -o-transform     : $efecto;
+    transform        : $efecto;
+}
+
+@mixin placeholder($color){
+    ::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    :-moz-placeholder {
+        color: $color;
+    }
+
+    ::-moz-placeholder {
+       color: $color;
+    }
+
+    :-ms-input-placeholder {
+       color: $color;
+    }
+}
+//  END MIXINS

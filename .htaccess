@@ -1,0 +1,94 @@
+########################################
+##               BASICO               ##
+########################################
+
+AddDefaultCharset UTF-8
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+#Denegamos acceso al .htaccess, php.ini, etc...
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+#Establecemos el archivo index.html como predeterminado
+DirectoryIndex index.html
+
+#Evitamos que se listen los directorios
+Options -Indexes +FollowSymLinks
+
+#Redirigimos de www a non-www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+### MUY DELICADO - URL AMIGABLE ###
+AddType text/x-component .htc
+
+#Eliminamos .php de la URL. Usamos REQUEST para evitar loops
+RewriteCond %{THE_REQUEST} ^GET\ (.*)\.php\ HTTP
+RewriteRule (.*)\.php$ $1 [R=301]
+
+#Eliminamos index
+RewriteRule (.*)/index$ $1/ [R=301]
+
+#Si no es un directorio, eliminamos /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} /$
+RewriteRule (.*)/ $1 [R=301]
+
+#Añadimos .php a los archivos de acceso, pero sin redirigir
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule (.*) $1\.php [L]
+### END DELICADO ###
+
+#Evitamos que se creen diálogos cuando un usuario intente descargar un pdf o un zip. La descarga será inmediata.
+AddType application/octet-stream .pdf
+AddType application/octet-stream .zip
+
+#Comprimimos todo
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+
+
+########################################
+##         CONTRA EL HACKING          ##
+########################################
+
+#Evitamos el hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://(www.)?wimool.com/.*$ [NC]
+RewriteRule .(gif|swf|flv|png|svg)$ [R=302,L]
+
+#Impedir proc/self/environ
+RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+
+#Protección del mosConfig a través de la URL
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+
+#Pretección si acceden por URL con base64
+RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
+
+#Bloqueamos cualquier script pasado por URL
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+
+#Bloquear PHPGlobals pasado por URL
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
+
+#Bloquear cualquier script que intente modificar el _REQUEST por la URL
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
+
+#Lanzamos un 403 Forgibben en el index en caso de que ocurra
+RewriteRule ^(.*)$ index.html [F,L]
