@@ -17,12 +17,12 @@
 // GENERAL
 body{
     font-family     : 'OS-Regular';
-    font-size       : 18px;
+    font-size       : 16px;
     color           : $primario;
     height          : 100%;
     width           : 100%;
     background-color: $primario;
-    line-height     : 1;
+    line-height     : 1.5;
     overflow: hidden;
 }
 
@@ -94,17 +94,15 @@ strong{
                 font-family: 'PT Serif';
                 color: $primario;
                 display: block;
-                font-size: 32px;
-                margin: 45px 0 15px;
+                font-size: 26px;
+                margin: 45px 0 20px;
             }
 
             .desc{
                 font-family: 'OS-Regular';
                 color: $gris1;
                 display: block;
-                font-size: 16px;
                 margin: 0 0 45px;
-                line-height: 26px;
             }
 
             .btn{
@@ -144,7 +142,7 @@ strong{
         text-align: center;
 
         .coffee{
-            background-image: url('../images/icon/coffee_icon.svg');
+            background-image: url('/images/icon/coffee_icon.svg');
             background-size: 33px 30px;
             background-repeat: no-repeat;
             background-position: center;
@@ -200,10 +198,10 @@ strong{
         h2{
             font-family: 'PT Serif';
             display: block;
-            font-size: 28px;
+            font-size: 26px;
             text-align: center;
             margin: 0 0 45px;
-            line-height: 46px;
+            line-height: 1.4;
         }
 
         ol{
@@ -211,8 +209,6 @@ strong{
 
             li{
                 font-family: 'OS-Regular';
-                font-size: 16px;
-                line-height: 26px;
                 margin: 0 0 30px;
             }
         }
